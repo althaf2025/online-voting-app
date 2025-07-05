@@ -2,7 +2,7 @@
 FROM tomcat:9-jre11
 
 # Copy the WAR file into the webapps directory
-COPY target/OnlineVotingSystemV3-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY target/OnlineVotingSystemV3-1.0-SNAPSHOT.war /opt/tomcat9/webapps
 
 # Expose the default Tomcat port (8080)
 EXPOSE 8080
