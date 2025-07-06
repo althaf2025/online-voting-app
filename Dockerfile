@@ -1,11 +1,17 @@
-# Use an official Tomcat runtime as a base image
-FROM tomcat:9-jre11
+# Use the official Tomcat 9 base image with OpenJDK 8
+FROM tomcat:9-jdk8
 
-# Copy the WAR file into the webapps directory
-COPY target/OnlineVotingSystemV3-1.0-SNAPSHOT.war /opt/tomcat9/webapps
+# Set maintainer (optional)
+LABEL maintainer="althaf2025"
 
-# Expose the default Tomcat port (8080)
-EXPOSE 8081
+# Remove default webapps to avoid clutter
+RUN rm -rf /opt/tomcat9/webapps/*
 
-# Command to run Tomcat
+# Copy the built WAR into the Tomcat webapps directory
+COPY target/OnlineVotingSystemV3-1.0-SNAPSHOT.war /opt/tomcat9/webapps/ROOT.war
+
+# Expose port 8080 (Tomcat default)
+EXPOSE 8080
+
+# Start Tomcat
 CMD ["catalina.sh", "run"]
