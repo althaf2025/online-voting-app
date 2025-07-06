@@ -1,5 +1,5 @@
 # Use the official Tomcat 9 base image with OpenJDK 8
-FROM tomcat:9-jdk8
+FROM tomcat:9-jre11
 
 # Set maintainer (optional)
 LABEL maintainer="althaf2025"
